@@ -25,7 +25,7 @@ export class PagoMultasComponent {
 
   getMultas(){
     const body = {
-        "cui": 1234567890123,
+        "cui": this.sharedLogin.sharedData.body.identificador,
         "pasaporte": -1
     };
     this.policiaService.get_multas(body).subscribe({
@@ -33,7 +33,7 @@ export class PagoMultasComponent {
         var respuesta:any;
         respuesta = res;
         this.multas = respuesta
-        console.log(this.sharedLogin.sharedData.body);
+        console.log(this.sharedLogin.sharedData.body.identificador);
         console.log(this.multas.multas);
       },error: (err) => { 
         console.log(this.sharedLogin.sharedData.body.rol.id_usuario);

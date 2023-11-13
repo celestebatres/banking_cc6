@@ -21,7 +21,7 @@ module.exports = function(dbInyectada){
     function unoForUser(id){
         return db.getPrestamoforUser(tabla, id);
     }
-    
+    "SELECT u.identificador as uid, AVG(p.meses_atrasados) AS score,  CASE WHEN AVG(p.meses_atrasados) <= 3.3 THEN 'Red' WHEN AVG(p.meses_atrasados) > 3.3 AND AVG(p.meses_atrasados) <= 6.6 THEN 'Yellow' ELSE 'Green'  END AS traffic_light_color FROM usuario u  JOIN prestamo p ON u.usuario = p.usuario WHERE identificador = ${uid} GROUP BY u.identificador;",
    async function agregar(body){
 
        const prestamo ={
