@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiPoliciaService } from 'src/app/services/api-policia.service';
 import { RegisterService } from 'src/app/services/register.service';
