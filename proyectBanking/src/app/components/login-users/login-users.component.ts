@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import {LoginService} from '../../services/login.service';
 import { Route, Router } from '@angular/router';
+import { SharedLoginService } from '../../services/shared-login.service'
 @Component({
   selector: 'app-login-users',
   templateUrl: './login-users.component.html',
@@ -10,7 +11,7 @@ import { Route, Router } from '@angular/router';
 export class LoginUsersComponent {
   username: string="";
   password: string="";
-  constructor(private loginService: LoginService, private router: Router){}
+  constructor(private loginService: LoginService, private router: Router, private sharedLogin : SharedLoginService){}
   
   login() {
     const body = {
@@ -21,6 +22,7 @@ export class LoginUsersComponent {
       next: (res) =>{
         var respuesta:any;
         respuesta = res;
+        this.sharedLogin.sharedData = respuesta;
         console.log(respuesta);
         this.router.navigateByUrl("dashboard-users");
       },error: (err) => {

@@ -34,5 +34,89 @@
 </header>
 
 <body>
-    <div class="wrapper"></div>
+    <div class="wrapper">
+        <div class="container-fluid pb-4">
+            <div class="d-grid gap-3" style="grid-template-columns: 1fr;">
+              <div class="bg-body-tertiary border rounded-3">
+                <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white rounded-3">
+                  <a href="/"
+                    class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+                    <svg class="bi me-2" width="30" height="24">
+                      <use xlink:href="#bootstrap" />
+                    </svg>
+                    <span class="fs-5 fw-semibold">Multas pendientes</span>
+                  </a>
+                  <div class="list-group list-group-flush border-bottom scrollarea">
+      
+                    <div *ngFor="let multa of multas.multas" class="list-group-item list-group-item-action py-3 lh-tight">
+                      <div class="d-flex w-100 align-items-center justify-content-between">
+                        <strong class="mb-1">{{multa.tipo_multa}}</strong>
+                        <small class="text-muted">Monto</small>
+                      </div>
+                      <div class="d-flex w-100 align-items-center justify-content-between">
+                        <div class="col-10 mb-1 small">{{multa.descripcion}}
+                        </div>
+                        <small class="text-muted"><span style="color:red;">GTQ {{multa.monto}}</span></small>
+                      </div>
+                      <div class="d-flex w-50">
+                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#myModal" (click)="pre_pay(multa.multa, multa.monto, multa.persona)">Pagar multa</button>
+                      </div>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+
+            </div>
+        </div>
+        <div *ngIf="!multas.multas"class="bg-body-tertiary border rounded-3">
+            <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white rounded-3">
+              <div class="list-group list-group-flush border-bottom scrollarea">
+  
+                <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
+                  <div class="d-flex w-100 align-items-center justify-content-between">
+                    <h2><strong class="mb-1">No tienes multas</strong></h2>
+                  </div>
+                </a>
+  
+              </div>
+            </div>
+          </div>
+    </div>
+<!-- Button to trigger the modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+    Open Modal
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Pagar multa</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Dropdown in the modal -->
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+              Cuentas
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <li><a class="dropdown-item" href="#">Option 1</a></li>
+              <li><a class="dropdown-item" href="#">Option 2</a></li>
+              <li><a class="dropdown-item" href="#">Option 3</a></li>
+            </ul>
+          </div>
+  
+          <!-- Additional content in the modal -->
+          <p>Your modal content goes here.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary">Pagar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
