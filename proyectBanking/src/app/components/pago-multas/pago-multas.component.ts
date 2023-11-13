@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { Cuenta } from 'src/app/models/Cuenta';
+import { CuentasResponse } from 'src/app/models/CuentasResponse';
 import { MultasResponse } from 'src/app/models/MultasResponse';
 import { ApiPoliciaService } from 'src/app/services/api-policia.service';
 import { CuentasService } from 'src/app/services/cuentas.service';
@@ -13,9 +15,11 @@ import { SharedLoginService } from 'src/app/services/shared-login.service';
 })
 export class PagoMultasComponent {
   multas = new MultasResponse("",[], 0, 0);
+  cuentas = new CuentasResponse(false, 0, []);
   multaId = 0
   multaMonto = 0;
   multaPersona = 0;
+  cuenta=0;
   constructor(private policiaService: ApiPoliciaService, private router: Router, private pagoMultas: PagoMultasService, private sharedLogin: SharedLoginService, private cuentasService: CuentasService ){}
   
 
@@ -44,7 +48,10 @@ export class PagoMultasComponent {
       next: (res) =>{
         var respuesta:any;
         respuesta = res;
-        console.log(respuesta);
+        this.cuentas = respuesta
+        console.log('this.cuentas');
+        console.log(this.cuentas);
+        console.log(this.cuentas.body);
       },error: (err) => { 
         alert("No se recuperaron cuentas intentalo mas tarde!");
       }
@@ -58,24 +65,54 @@ export class PagoMultasComponent {
     this.multaId = multa
     this.multaMonto = monto;
     this.multaPersona = persona;
-
   }
-  pay(multa:number, monto:number, persona:number){
+  pay_bank(){
+    const cuentaLocal = this.cuentas.body.find(item => item.cuenta_bancaria == this.cuenta);
+    if( !cuentaLocal || cuentaLocal?.balance < this.multaMonto){
+      alert("no tienes fondos suficientes");
+    }else{
+      const uid = this.sharedLogin.sharedData.body.id_usuario
+      this.cuentasService.get_cuentas(uid).subscribe({
+        next: (res) =>{
+          var respuesta:any;
+          respuesta = res;
+          this.pay_police()
+        },error: (err) => { 
+          alert("No se pudo conectar con el banco, intentalo mas tarde!");
+        }
+      });
+    }
+  }
+  pay_police(){
+    const cuentaLocal = this.cuentas.body.find(item => item.cuenta_bancaria == this.cuenta);
     const body = {
-      "persona":persona,
-      "multa":multa
-};
+      "persona": this.multaPersona,
+      "multa":this.multaId
+    };
+    console.log(body)
     this.pagoMultas.pagar_multas(body).subscribe({
       next: (res) =>{
         var respuesta:any;
         respuesta = res;
-        console.log(respuesta);
-        
+        let body = {
+          "cuenta_bancaria" :cuentaLocal?.cuenta_bancaria ,
+          "id_usuario" : this.sharedLogin.sharedData.body.id_usuario,
+          "balance": (cuentaLocal?.balance ? (cuentaLocal?.balance - this.multaMonto):cuentaLocal?.balance)
+        }
+        this.cuentasService.update_cuenta(body).subscribe({
+          next: (res) =>{
+            var respuesta:any;
+            respuesta = res;
+            this.getMultas()
+          },error: (err) => { 
+            alert("No se pudo conectar con el banco, intentalo mas tarde!");
+          }
+        });
       },error: (err) => {
         if (err.error.status == 401) {
               console.log("401");
             }else{
-              console.log("Error del servidor");
+              alert("No se pudo conectar con la policia, intentalo mas tarde!");
             }
       }
     });

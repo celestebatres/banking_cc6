@@ -98,23 +98,15 @@
         </div>
         <div class="modal-body">
           <!-- Dropdown in the modal -->
-          <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-              Cuentas
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <li><a class="dropdown-item" href="#">Option 1</a></li>
-              <li><a class="dropdown-item" href="#">Option 2</a></li>
-              <li><a class="dropdown-item" href="#">Option 3</a></li>
-            </ul>
-          </div>
-  
-          <!-- Additional content in the modal -->
-          <p>Your modal content goes here.</p>
+          <p>Selecciona una cuenta para pagar</p>
+          <select [(ngModel)]="cuenta" class="btn btn-secondary dropdown-toggle" type="button">
+            <option value="">Selecciona la cuenta</option>
+            <option *ngFor="let cuenta of cuentas.body" [value]="cuenta.cuenta_bancaria">Cuenta #{{ cuenta.cuenta_bancaria }}</option>
+        </select>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-primary">Pagar</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="pay_bank()">Pagar</button>
         </div>
       </div>
     </div>

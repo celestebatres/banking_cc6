@@ -15,4 +15,7 @@ export class CuentasService {
   get_cuentas(usuario: number){
     return this.http.get(this.url + "/api/cuentas/searchIdUser/"+ usuario);
   }
+  update_cuenta(body: any){
+    return this.http.put(this.url + "/api/cuentas", body);
+  }
 }

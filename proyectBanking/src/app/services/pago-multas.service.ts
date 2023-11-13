@@ -6,7 +6,7 @@ const HEADERS = {headers: new HttpHeaders().set('Content-Type', 'application/jso
   providedIn: 'root'
 })
 export class PagoMultasService {
-  url_pagar_multas = "https://cheaply-safe-mink.ngrok-free.app/multas/consultar_multas_sinpagar";
+  url_pagar_multas = "https://cheaply-safe-mink.ngrok-free.app/multas/pagar_multa";
 
   constructor(private http:HttpClient) { }
   
