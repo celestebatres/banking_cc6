@@ -1,0 +1,44 @@
+<nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/cover">Banking</a>
+  </div>
+</nav>
+<div class="wrapper">
+
+  <div class="bienvenida">
+    <h2>AGENCIA VIRTUAL</h2>
+    <p>Realiza tus transacciones donde sea que estes.</p>
+    <iframe src="https://lottie.host/?file=724372bc-6803-4cf9-a892-ba223799627f/H2O77EJLV1.json"></iframe>
+  </div>
+<div  class="body">
+  <div class="descript">
+    <iframe src="https://lottie.host/?file=dfdb93b9-ebc8-4cf4-ac69-414c22d08a36/diG4IKoY94.json"></iframe>
+  </div>
+  <div class="line-vertical">
+    <hr>
+  </div>
+<form class="formulario" (ngSubmit)="login()">
+    <h2>Iniciar Sesion</h2>
+    <div class="form-floating mb-3 mt-3">
+      <input type="email" [(ngModel)]="username" name="username" class="form-control" placeholder="name@example.com">
+      <label>Usuario</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="password" [(ngModel)]="password" name="password" class="form-control" placeholder="Password">
+      <label>Contraseña</label>
+    </div>
+    <a class="link-olvidastetucontrasena mt-2" routerLink="/recover-password">¿Olvidaste tu contraseña?</a>
+    <div class="d-grid gap-2">
+      <!-- <input type="button" value="Ingresar" class="btn btn-warning btn-lg mt-3"> -->
+      <button class="btn btn-warning btn-lg mt-3" type="submit">Ingresar</button>
+    </div>
+    <hr class="m-4 mb-2">
+    <p class="mt-3">¿No tienes una cuenta? <a routerLink="/register-user" class="link-notienescuenta">Crea una.</a></p>
+  </form>
+
+</div>
+
+
+
+</div>
+

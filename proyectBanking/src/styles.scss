@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'LatoBlack';
+  src: url('./assets/fonts/Lato-Black.ttf');
+}
+
+@font-face {
+  font-family: 'LatoRegular';
+  src: url('./assets/fonts/Lato-Regular.ttf');
+}
+
+h1,
+p {
+  font-family: 'LatoRegular';
+}
+
+h3 {
+  font-family: 'LatoRegular';
+}
+
+h2 {
+  font-family: 'LatoBlack';
+}

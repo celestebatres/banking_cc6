@@ -1,0 +1,178 @@
+.line-vertical{
+  height:50vh;
+  width:.1vw;
+  opacity: 0.180;
+  margin-left: 6.5%;
+  border-width:0;
+
+  background-color:#000;
+ }
+
+.body, .formulario{
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+}
+.body, .formulario:nth-child(1) {
+  animation-name: rotating-form;
+}
+@keyframes rotating-form {
+  0% {
+    opacity: 0;
+  }
+  33% {
+    opacity: 0;
+  }
+  34% {
+    transform: translateY(45%);
+  }
+}
+
+.bienvenida h2{
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+}
+.bienvenida p{
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+}
+.bienvenida iframe{
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+}
+.bienvenida h2:nth-child(1) {
+  animation-name: rotating-text-1;
+}
+@keyframes rotating-text-1 {
+  0% {
+    opacity: 0;
+  }
+  33% {
+    opacity: 0;
+  }
+  34% {
+    transform: translateY(45%);
+  }
+}
+
+.bienvenida p:nth-child(2) {
+  animation-name: rotating-text-1;
+}
+@keyframes rotating-text-1 {
+  0% {
+    opacity: 0;
+  }
+  33% {
+    opacity: 0;
+  }
+  34% {
+    transform: translateY(45%);
+  }
+}
+
+.bienvenida iframe:nth-child(3) {
+  animation-name: rotating-text-1;
+}
+@keyframes rotating-text-1 {
+  0% {
+    opacity: 0;
+  }
+  33% {
+    opacity: 0;
+  }
+  34% {
+    transform: translateY(45%);
+  }
+}
+
+
+.wrapper{
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+  justify-content: left;
+  height: 100%;
+  background-image: url("../../../assets/img/yellow.jpg");
+  width: 100%;
+  max-width: 1920px;
+  min-height: 877px;
+  margin: auto;
+  padding: 15px;
+  padding-bottom: 8em;
+  text-align: center;
+
+}
+
+.body {
+  display: flex;
+  flex-direction: row;
+  width: 980px;
+  height: 560px;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+  background-color: white;
+  border-radius: 2%;
+  box-shadow: 0 0 5px rgb(116, 114, 114);
+  background: white;
+  transition: transform .3s;
+
+
+}
+.body:hover {
+  transform: scale(1.07);
+}
+
+.link-notienescuenta{
+  color: rgb(151, 155, 37);
+  text-decoration: none;
+
+}
+
+.link-olvidastetucontrasena{
+  color: rgb(151, 155, 37);
+  text-decoration: none;
+}
+
+
+.form-floating {
+  text-align: start;
+
+}
+
+.formulario{
+
+  margin-top: 7%;
+  margin-left: 10%;
+
+}
+.descript{
+  margin-right: 17%;
+}
+
+.descript iframe {
+  width: 180%;
+  height: 100%;
+}
+
+.fondo-central{
+  height: 250px;
+}
+
+.fondos{
+  height: 150px;
+  margin-bottom: 10px;
+}
+
+.bienvenida{
+  //background-color: black;
+  max-width: 25%;
+  height: 20%;
+  font-size: 30px;
+  text-align: center;
+  margin-top: 12%;
+  margin-left: 80px;
+}
+
+.bienvenida h2{
+  font-size: 50px;
+}

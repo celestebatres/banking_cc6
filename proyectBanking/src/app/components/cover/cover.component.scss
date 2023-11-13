@@ -1,0 +1,61 @@
+.wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: left;
+  width: 100%;
+  max-width: 1920px;
+  min-height: 933px;
+  margin: auto;
+  text-align: center;
+
+}
+
+.inicioSesion {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  min-height: 933px;
+}
+
+.inicioSesion iframe{
+  width: 600px;
+  height: 500px;
+}
+
+.inicioSesion .usuarios{
+  position: relative;
+  display: flex;
+  background-image: url("../../../assets/img/yellow.jpg");
+  justify-content: center;
+  width: 50%;
+  padding: 8%;
+  transition: 0.5s;
+}
+.usuarios:hover {
+  transform: scale(1.2);
+  z-index: 0;
+}
+.inicioSesion .administradores{
+  position: relative;
+  display: flex;
+  background-image: url("https://fondosmil.co/fondo/65196.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  justify-content: center;
+  width: 50%;
+  height: 100vh;
+  padding: 8%;
+  transition: 0.5s;
+}
+.administradores:hover {
+  transform: scale(1.2);
+  z-index: 0;
+}
+.integrantes{
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  z-index: 1;
+}
