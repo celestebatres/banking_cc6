@@ -3,8 +3,13 @@ const config = require('../config');
 const error = require('../middleware/error');
 const secret = config.jwt.secret;
 
-function asignarToken(data) {
-  return jwt.sign(data, secret);
+function asignarToken(data, rol, id_usuario) {
+    data = {
+        id_usuario : id_usuario,
+        rol : rol,
+        token : jwt.sign(data, secret)
+    }
+    return data;
 }
 
 function verificarToken(token) {

@@ -1,4 +1,5 @@
 const tabla = 'auth';
+const tablaUsuario = 'usuarios';
 const auth = require('../../auth');
 const bcrypt = require('bcrypt');
 const error = require('../../middleware/error');
@@ -32,13 +33,13 @@ module.exports = function(dbInyectada){
     
     async function login(username, password){
         const data = await db.queryLogin(tabla, {username: username});
-        console.log(data);
+        const rol = await db.getRol(tablaUsuario, data.id_usuario);
         if(data){
             return bcrypt.compare(password, data.password)
                 .then(resultado => {
                     if(resultado === true){
                         //Generar token
-                        return auth.asignarToken({data});
+                        return auth.asignarToken({data}, rol.rol , rol.id_usuario);
                     }else{
                         throw error('Password invalido', 401);
                     }
