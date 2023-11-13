@@ -1,0 +1,63 @@
+<header class="p-3 border-bottom">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
+                <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+                    <use xlink:href="#bootstrap"></use>
+                </svg>
+            </a>
+
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a [routerLink]="['/dashboard-admins']" routerLinkActive="router-link-active"
+                        class="nav-link px-2 link-body-emphasis"> Usuarios Existentes </a></li>
+            </ul>
+
+            <div class="dropdown text-end">
+                <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="../../../assets/img/banco.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                </a>
+                <ul class="dropdown-menu text-small">
+                    <li><a class="dropdown-item" href="#">Perfil</a></li>
+                    <li><a class="dropdown-item" href="#">Configuracion</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#">Cerrar Sesión</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<body>
+    <div class="wrapper">
+        <!-- Lista de usuarios -->
+        <div class="container-fluid pb-4">
+            <div class="" style="grid-template-columns: 1fr 2fr;">
+                <div class="bg-body-tertiary border rounded-3">
+                    <table class="table table-bordered"><!-- ngFor -->
+                        <thead>
+                          <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Identificador</th>
+                            <th scope="col">Acciones</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let usuario of usuarios">
+                            <th scope="row">{{usuario.id_usuario}}</th>
+                            <td>{{usuario.nombre}}</td>
+                            <td>{{usuario.identificador}}</td>
+                            <td><button class="btn btn-info" [routerLink]="['/detalles-usuario', usuario.id_usuario]">Ver detalles</button><button class="btn btn-info">Crear Cuenta</button><button class="btn btn-info">Crear Préstamo</button><button class="btn btn-info">Editar</button><button class="btn btn-info">Eliminar</button></td>
+                          </tr>                         
+                        </tbody>
+                      </table>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

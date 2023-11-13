@@ -17,6 +17,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { PagoMultasComponent } from './components/pago-multas/pago-multas.component';
 import { PrestamosComponent } from './components/prestamos/prestamos.component';
 import { BalanceComponent } from './components/balance/balance.component';
+import { CuentasComponent } from './components/cuentas/cuentas.component';
+import { DetallesUsuarioComponent } from './components/detalles-usuario/detalles-usuario.component';
+import { DepositarComponent } from './components/depositar/depositar.component';
 
 
 @NgModule({
@@ -33,7 +36,10 @@ import { BalanceComponent } from './components/balance/balance.component';
     DashboardAdminsComponent,
     PagoMultasComponent,
     PrestamosComponent,
-    BalanceComponent
+    BalanceComponent,
+    CuentasComponent,
+    DetallesUsuarioComponent,
+    DepositarComponent
   ],
   imports: [
     BrowserModule,

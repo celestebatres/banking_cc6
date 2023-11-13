@@ -11,6 +11,7 @@ import { SharedLoginService } from '../../services/shared-login.service'
 export class LoginUsersComponent {
   username: string="";
   password: string="";
+  rol: number = 0;
   constructor(private loginService: LoginService, private router: Router, private sharedLogin : SharedLoginService){}
   
   login() {
@@ -24,7 +25,12 @@ export class LoginUsersComponent {
         respuesta = res;
         this.sharedLogin.sharedData = respuesta;
         console.log(respuesta);
-        this.router.navigateByUrl("dashboard-users");
+        this.rol = 2
+        if(this.rol === 1){
+          this.router.navigateByUrl("dashboard-admins");
+        }else if(this.rol === 2){
+          this.router.navigateByUrl("dashboard-users");
+        }
       },error: (err) => {
         if (err.error.status == 401) {
               alert("Usuario o Contraseña Incorrecto");

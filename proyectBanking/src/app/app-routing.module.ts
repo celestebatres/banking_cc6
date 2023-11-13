@@ -13,6 +13,7 @@ import { RegisterUserComponent } from './components/register-user/register-user.
 import { PagoMultasComponent } from './components/pago-multas/pago-multas.component';
 import { PrestamosComponent } from './components/prestamos/prestamos.component';
 import { BalanceComponent } from './components/balance/balance.component';
+import { DetallesUsuarioComponent } from './components/detalles-usuario/detalles-usuario.component';
 
 const routes: Routes = [
 
@@ -27,6 +28,7 @@ const routes: Routes = [
   {path: 'pago-multas', component: PagoMultasComponent, pathMatch: 'full'},
   {path: 'prestamos', component: PrestamosComponent, pathMatch: 'full'},
   {path: 'balance', component: BalanceComponent, pathMatch: 'full'},
+  {path: 'detalles-usuario/:id', component: DetallesUsuarioComponent, pathMatch: 'full'},
   {path: 'dashboard-users', component: DashboardUsersComponent, canMatch: [authGuard], pathMatch: 'full'},
   {path: 'dashboard-admins', component: DashboardAdminsComponent, canMatch: [authGuard], pathMatch: 'full'},
   {path: '**', redirectTo: 'error/404', pathMatch: 'full'}
