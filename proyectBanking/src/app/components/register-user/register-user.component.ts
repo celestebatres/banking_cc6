@@ -55,7 +55,8 @@ export class RegisterUserComponent {
         console.log(respuesta);
         let persona_existe = respuesta.persona_existe;
         // Persona existe en Poli
-        if (persona_existe === 1) {
+        
+        if (persona_existe === 1 && 1 > 2) {
           alert("Persona Existe")
             this.registerService.register(body).subscribe({
               next: (res) => {
@@ -73,7 +74,6 @@ export class RegisterUserComponent {
         }else {
           alert("La persona no existe");
         }
-
       }, error: (err) => {
         // Error de Conexion o Más
         console.log(err);

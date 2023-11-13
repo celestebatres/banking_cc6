@@ -10,6 +10,7 @@ import { Route, Router } from '@angular/router';
 export class LoginUsersComponent {
   username: string="";
   password: string="";
+  rol = 1; //1 - Admin,  2 - usuario Normal
   constructor(private loginService: LoginService, private router: Router){}
   
   login() {
@@ -22,7 +23,11 @@ export class LoginUsersComponent {
         var respuesta:any;
         respuesta = res;
         console.log(respuesta);
-        this.router.navigateByUrl("dashboard-users");
+        if(this.rol === 1){
+          this.router.navigateByUrl("dashboard-admins");
+        }else if(this.rol === 2){
+          this.router.navigateByUrl("dashboard-users");
+        }
       },error: (err) => {
         if (err.error.status == 401) {
               alert("Usuario o Contraseña Incorrecto");
