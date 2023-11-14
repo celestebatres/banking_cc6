@@ -25,7 +25,7 @@ export class PagoMultasComponent {
 
   getMultas(){
     const body = {
-        "cui": this.sharedLogin.sharedData.body.identificador,
+        "cui": 1234567890123,
         "pasaporte": -1
     };
     this.policiaService.get_multas(body).subscribe({
@@ -33,8 +33,6 @@ export class PagoMultasComponent {
         var respuesta:any;
         respuesta = res;
         this.multas = respuesta
-        console.log(this.sharedLogin.sharedData.body.identificador);
-        console.log(this.multas.multas);
       },error: (err) => { 
         console.log(this.sharedLogin.sharedData.body.rol.id_usuario);
         alert("No se recuperaron multas intentalo mas tarde!");
@@ -49,9 +47,6 @@ export class PagoMultasComponent {
         var respuesta:any;
         respuesta = res;
         this.cuentas = respuesta
-        console.log('this.cuentas');
-        console.log(this.cuentas);
-        console.log(this.cuentas.body);
       },error: (err) => { 
         alert("No se recuperaron cuentas intentalo mas tarde!");
       }

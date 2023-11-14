@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiPoliciaService } from 'src/app/services/api-policia.service';
 import { RegisterService } from 'src/app/services/register.service';
@@ -13,7 +12,7 @@ import { RegisterService } from 'src/app/services/register.service';
 export class RegisterUserComponent {
   constructor(private registerService: RegisterService, private policiaService: ApiPoliciaService, private router: Router) { }
 
-  rol = 1;
+  rol = 2;
   nombre: string = "";
   identificador: string = "";
   fecha_nacimiento: Date = new Date;
@@ -56,14 +55,14 @@ export class RegisterUserComponent {
         console.log(respuesta);
         let persona_existe = respuesta.persona_existe;
         // Persona existe en Poli
-        
-        if (persona_existe === 1 && 1 > 2) {
+        if (persona_existe === 1) {
           alert("Persona Existe")
             this.registerService.register(body).subscribe({
               next: (res) => {
                 var respuesta: any;
                 respuesta = res;
                 console.log(respuesta);
+                this.router.navigateByUrl("dashboard-users");
               }, error: (err) => {
                 if (err.error.status == 401) {
                   alert("Usuario o Contraseña Incorrecto");
@@ -75,6 +74,7 @@ export class RegisterUserComponent {
         }else {
           alert("La persona no existe");
         }
+
       }, error: (err) => {
         // Error de Conexion o Más
         console.log(err);

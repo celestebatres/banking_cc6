@@ -25,7 +25,10 @@ export class LoginUsersComponent {
         respuesta = res;
         this.sharedLogin.sharedData = respuesta;
         console.log(respuesta);
-        this.rol = 2
+        this.rol = respuesta.body.rol;
+        localStorage.setItem("rol", ""+this.rol);
+        localStorage.setItem("id_usuario", ""+respuesta.body.id);
+        localStorage.setItem("identificador", ""+respuesta.body.identificador);
         if(this.rol === 1){
           this.router.navigateByUrl("dashboard-admins");
         }else if(this.rol === 2){
